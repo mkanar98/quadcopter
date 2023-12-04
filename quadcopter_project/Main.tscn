@@ -3,7 +3,7 @@
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://StaticBody.gd" type="Script" id=2]
 [ext_resource path="res://RigidBody.gd" type="Script" id=3]
-[ext_resource path="res://CollisionShape2.gd" type="Script" id=4]
+[ext_resource path="res://Spatial.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 10, 0, 10 )
@@ -11,12 +11,12 @@ extents = Vector3( 10, 0, 10 )
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.937255, 0.231373, 0.0901961, 1 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=6]
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.109804, 0.133333, 0.737255, 1 )
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=7]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -34,22 +34,27 @@ depth = 10.0
 material = SubResource( 2 )
 
 [node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.84615, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 3 )
-
-[node name="CSGBox" type="CSGBox" parent="RigidBody"]
-material = SubResource( 4 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99605, 0 )
 shape = SubResource( 6 )
-script = ExtResource( 4 )
 
 [node name="CSGBox2" type="CSGBox" parent="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9916, 0 )
+material = SubResource( 4 )
+
+[node name="Spatial" type="Spatial" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0 )
+script = ExtResource( 4 )
+
+[node name="CSGBox" type="CSGBox" parent="RigidBody/Spatial"]
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody/Spatial"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+shape = SubResource( 7 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10 )

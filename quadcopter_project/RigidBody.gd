@@ -13,4 +13,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+#pass
+func _physics_process(delta):
+	var force = Vector3(0,10,0) # y is up
+	var offset = Vector3(0,1.25,0) # for now just apply force to center - but later we can make this work for each propellor position
+	get_angular_velocity()*delta
+	add_force(force, offset)
+	
+var propellor_angular_velocity = 0 # current
+var target_propellor_angular_velocity = 10 # target
+var angular_velocity_interpolation_rate = 1.0 # how fast we change to target
+
+func set_angular_velocity(new_angular_velocity):
+	target_propellor_angular_velocity = new_angular_velocity
+
+
