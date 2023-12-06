@@ -14,6 +14,10 @@ config/name="quadcopter_project"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalRigidBody="*res://RigidBody.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

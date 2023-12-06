@@ -45,6 +45,7 @@ material = SubResource( 4 )
 
 [node name="PropellerBox" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
+mass = 0.1
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PropellerBox"]
@@ -62,4 +63,4 @@ nodes/node_a = NodePath("../RigidBody")
 nodes/node_b = NodePath("../PropellerBox")
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10 )
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 7, 15 )
