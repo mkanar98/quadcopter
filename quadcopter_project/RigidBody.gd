@@ -21,8 +21,10 @@ var f0 = 5
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-#func _physics_process(delta):
-	
+func _physics_process(delta):
+	set_friction(0)
+	set_linear_damp(0)
+	set_angular_damp(0)
 	#var force = Vector3(0,f0,0) # y is up
 	#var offset = Vector3(0,0,0) # for now just apply force to center - but later we can make this work for each propellor position
 	
