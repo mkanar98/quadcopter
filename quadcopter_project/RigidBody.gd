@@ -27,7 +27,13 @@ func _physics_process(delta):
 	set_angular_damp(0)
 	#var force = Vector3(0,f0,0) # y is up
 	#var offset = Vector3(0,0,0) # for now just apply force to center - but later we can make this work for each propellor position
-	
+	var current_time = OS.get_ticks_msec()/1000
+	if current_time < 10:
+		add_torque(Vector3(0,f0,0))
+
+	else:
+		add_torque(Vector3(0,0,0))
+		
 	#add_force(force, offset)
 	#apply_torque_impulse(Vector3(0,-f0,0))
 	#add_torque(Vector3(0,f0,0))
