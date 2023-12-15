@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Drone.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 10, 0, 10 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.937255, 0.231373, 0.0901961, 1 )
+
+[sub_resource type="CylinderShape" id=6]
+height = 0.2
+radius = 0.5
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.109804, 0.133333, 0.737255, 1 )
+
+[node name="Main" type="Spatial"]
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 5 )
+
+[node name="CSGBox" type="CSGBox" parent="Floor"]
+width = 10.0
+height = 0.001
+depth = 10.0
+material = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 7, 15 )
+
+[node name="Drone" type="RigidBody" parent="."]
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )
+
+[node name="PropellorCollision1" type="CollisionShape" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.25, -0.6 )
+shape = SubResource( 6 )
+
+[node name="PropellorVisual1" type="CSGBox" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.25, -0.6 )
+width = 1.0
+height = 0.2
+depth = 0.2
+
+[node name="PropellorCollision2" type="CollisionShape" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.25, 0.6 )
+shape = SubResource( 6 )
+
+[node name="PropellorVisual2" type="CSGBox" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.25, 0.6 )
+width = 1.0
+height = 0.2
+depth = 0.2
+
+[node name="PropellorCollision3" type="CollisionShape" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.25, 0.6 )
+shape = SubResource( 6 )
+
+[node name="PropellorVisual3" type="CSGBox" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.25, 0.6 )
+width = 1.0
+height = 0.2
+depth = 0.2
+
+[node name="PropellorCollision4" type="CollisionShape" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.25, -0.6 )
+shape = SubResource( 6 )
+
+[node name="PropellorVisual4" type="CSGBox" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.25, -0.6 )
+width = 1.0
+height = 0.2
+depth = 0.2
+
+[node name="ChassisCollision" type="CollisionShape" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 7 )
+
+[node name="ChassisVisual" type="CSGBox" parent="Drone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+material = SubResource( 4 )
